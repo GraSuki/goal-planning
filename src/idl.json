@@ -1,0 +1,155 @@
+{
+  "version": "0.1.0",
+  "name": "solana_twitter",
+  "instructions": [
+    {
+      "name": "createTask",
+      "accounts": [
+        {
+          "name": "task",
+          "isMut": true,
+          "isSigner": true
+        },
+        {
+          "name": "createdPerson",
+          "isMut": true,
+          "isSigner": true
+        },
+        {
+          "name": "systemProgram",
+          "isMut": false,
+          "isSigner": false,
+          "docs": [
+            "CHECK"
+          ]
+        }
+      ],
+      "args": [
+        {
+          "name": "name",
+          "type": "string"
+        },
+        {
+          "name": "description",
+          "type": "string"
+        },
+        {
+          "name": "startDate",
+          "type": "string"
+        },
+        {
+          "name": "endDate",
+          "type": "string"
+        }
+      ]
+    },
+    {
+      "name": "updateTask",
+      "accounts": [
+        {
+          "name": "task",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "createdPerson",
+          "isMut": false,
+          "isSigner": true
+        }
+      ],
+      "args": [
+        {
+          "name": "name",
+          "type": "string"
+        },
+        {
+          "name": "description",
+          "type": "string"
+        },
+        {
+          "name": "startDate",
+          "type": "string"
+        },
+        {
+          "name": "endDate",
+          "type": "string"
+        }
+      ]
+    },
+    {
+      "name": "deleteTask",
+      "accounts": [
+        {
+          "name": "task",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "createdPerson",
+          "isMut": false,
+          "isSigner": true
+        }
+      ],
+      "args": []
+    }
+  ],
+  "accounts": [
+    {
+      "name": "Task",
+      "type": {
+        "kind": "struct",
+        "fields": [
+          {
+            "name": "createdPerson",
+            "type": "publicKey"
+          },
+          {
+            "name": "createdTime",
+            "type": "i64"
+          },
+          {
+            "name": "name",
+            "type": "string"
+          },
+          {
+            "name": "description",
+            "type": "string"
+          },
+          {
+            "name": "startDate",
+            "type": "string"
+          },
+          {
+            "name": "endDate",
+            "type": "string"
+          }
+        ]
+      }
+    }
+  ],
+  "errors": [
+    {
+      "code": 6000,
+      "name": "TopicTooLong",
+      "msg": "The provided topic should be 50 characters long maximum."
+    },
+    {
+      "code": 6001,
+      "name": "ContentTooLong",
+      "msg": "The provided content should be 280 characters long maximum."
+    },
+    {
+      "code": 6002,
+      "name": "StartDateTooLong",
+      "msg": "Start date should be 50 characters long maximum."
+    },
+    {
+      "code": 6003,
+      "name": "EndDateTooLong",
+      "msg": "End date should be 50 characters long maximum."
+    }
+  ],
+  "metadata": {
+    "address": "3JC8pMMrsgoUxpQLHtWsKDZyedAC8877eUoKcc8qV1Fb"
+  }
+}
